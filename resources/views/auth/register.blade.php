@@ -11,6 +11,8 @@
             @enderror
         </div>
 
+        <br />
+
         <div>
             <input name="email" placeholder="E-mail" value="{{ old('email') }}" />
             @error('email')
@@ -18,12 +20,16 @@
             @enderror
         </div>
 
+        <br />
+
         <div>
             <input name="email_confirmation" placeholder="E-mail de confirmação" />
             @error('email_confirmation')
                 <span>{{ $message }}</span>
             @enderror
         </div>
+
+        <br />
 
         <div>
 
@@ -33,12 +39,13 @@
             @enderror
         </div>
 
+        <br />
+
         @if($message = session()->get("message"))
             <div>{{ $message }}</div>
         @endif
-        <div>
 
-        </div>
+        <br />
 
         <button type="submit">Registrar</button>
     </form>
