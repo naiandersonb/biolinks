@@ -9,8 +9,6 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => view('welcome'));
-
 Route::middleware("guest")->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);

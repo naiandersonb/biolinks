@@ -1,0 +1,1 @@
+<button {{ $attributes->class(['btn w-full']) }}>{{ $slot }}</button>

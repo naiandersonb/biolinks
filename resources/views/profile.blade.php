@@ -1,8 +1,6 @@
 <div>
     <h1>Login</h1>
 
-    @dump($user->photo)
-
     <form action="{{ route("profile") }}" method="post" enctype="multipart/form-data">
         @csrf
         @method("PUT")
@@ -48,3 +46,4 @@
         <button>atulizar</button>
     </form>
 </div>
+</x-layout.app>

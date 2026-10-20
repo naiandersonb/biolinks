@@ -1,32 +1,22 @@
-<div>
-    <h1>Login</h1>
+<x-layout.app>
+    <x-container>
+        <x-card title="Login">
+            <x-form :route="route('login')" post id="login-form">
+                <x-input name="email" placeholder="Email" />
+                <x-input name="password" type="password" placeholder="Senha" />
+            </x-form>
 
-    <form action="{{ route("login") }}" method="post">
-        @csrf
+            @if($message = session()->get("message"))
+                <div class="text-error">{{ $message }}</div>
+            @endif
 
-        <div>
+            <x-slot:actions>
+                <x-button form="login-form" class="btn-primary">Logar</x-button>
 
-            <input name="email" placeholder="email" value="{{ old('email') }}" />
-            @error('email')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-
-        <div>
-
-            <input type="password" name="password" placeholder="senha" />
-            @error('password')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-
-        @if($message = session()->get("message"))
-            <div>{{ $message }}</div>
-        @endif
-        <div>
-
-        </div>
-
-        <button type="submit">Logar</button>
-    </form>
-</div>
+                <x-link :href="route('register')">
+                    I need to create a new account
+                </x-link>
+            </x-slot:actions>
+        </x-card>
+    </x-container>
+</x-layout.app>

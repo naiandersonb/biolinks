@@ -1,33 +1,35 @@
-<div>
-    <h1>Criar um link</h1>
+<x-layout-app>
+    <div>
+        <h1>Criar um link</h1>
 
-    <form action="{{ route("links.create") }}" method="post">
-        @csrf
+        <form action="{{ route("links.create") }}" method="post">
+            @csrf
 
-        <div>
-            <input name="name" placeholder="Nome" value="{{ old('name') }}" />
-            @error('name')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
+            <div>
+                <input name="name" placeholder="Nome" value="{{ old('name') }}" />
+                @error('name')
+                    <span>{{ $message }}</span>
+                @enderror
+            </div>
 
-        <br />
+            <br />
 
-        <div>
-            <input name="link" placeholder="Link" value="{{ old('link') }}" />
-            @error('link')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
+            <div>
+                <input name="link" placeholder="Link" value="{{ old('link') }}" />
+                @error('link')
+                    <span>{{ $message }}</span>
+                @enderror
+            </div>
 
-        <br />
+            <br />
 
-        @if($message = session()->get("message"))
-            <div>{{ $message }}</div>
-        @endif
+            @if($message = session()->get("message"))
+                <div>{{ $message }}</div>
+            @endif
 
-        <br />
+            <br />
 
-        <button type="submit">Registrar</button>
-    </form>
-</div>
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</x-layout-app>
