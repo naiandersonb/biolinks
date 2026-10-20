@@ -1,7 +1,7 @@
 <div>
     <h1>Login</h1>
 
-    <form action="/login" method="post">
+    <form action="{{ route("login") }}" method="post">
         @csrf
 
         <div>

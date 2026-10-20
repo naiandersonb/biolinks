@@ -2,9 +2,18 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
+use Hash;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * Summary of MakeLoginRequest
+ *
+ * @property-read  string $email
+ * @property-read string $password
+ */
 class MakeLoginRequest extends FormRequest
 {
     /**
@@ -12,7 +21,7 @@ class MakeLoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +32,22 @@ class MakeLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ];
+    }
+
+    public function attempt()
+    {
+        if ($user = User::query()->where('email', '=', $this->email)->first()) {
+
+            if (Hash::check($this->password, $user->password)) {
+                Auth::login($user);
+
+                return true;
+            }
+        }
+
+        return false;
     }
 }
