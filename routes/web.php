@@ -37,6 +37,6 @@ Route::middleware("auth")->group(function () {
     });
 });
 
-Route::get("/{handler}", BioLinkController::class);
+Route::get("/{user:handler}", BioLinkController::class);
 
 
