@@ -6,7 +6,15 @@
         <div>{{ $message }}</div>
     @endif
 
+    <div>
+        <p>{{ auth()->user()->name }} | {{ auth()->user()->handler }}</p>
+        <p>{{ auth()->user()->description }}</p>
+
+    </div>
+
+    <a href="{{ route("profile") }}">Atualiar perfil</a>
     <a href="{{ route("links.create") }}">Criar novo</a>
+
 
     <ul>
         @foreach ($links as $link)
